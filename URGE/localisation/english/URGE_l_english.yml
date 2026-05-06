@@ -1,0 +1,40 @@
+﻿l_english:
+
+ # Panel chrome
+ URGE_PANEL_HEADER: "§Y⚡ URGE§!"
+ URGE_PANEL_FOOTER: "§H[B] = Supremacy toggle§!"
+ URGE_TOGGLE_TT: "§YOpen / Close the URGE panel.§!\n\nPress §YB§! anywhere on the map to toggle."
+
+ # Buttons
+ URGE_BTN_ACTIVATE:    "⚡  Activate Military Supremacy"
+ URGE_BTN_ACTIVATE_TT: "Remove all attrition · Max all leaders (1,000+ div command) · Max air advantage · +9,999 PP · +9,999 convoys\n\n§HDoes NOT alter stability, war support, or manpower.§!\n\n§HPress §YB§H to activate.§!"
+
+ URGE_BTN_DEACTIVATE:    "✕  Deactivate Military Supremacy"
+ URGE_BTN_DEACTIVATE_TT: "Remove the URGE Military Supremacy national spirit.\n\n§HPress §YB§H to deactivate.§!"
+
+ URGE_BTN_MILITARY:    "⚓  Summon Grand Fleet & Air Corps"
+ URGE_BTN_MILITARY_TT: "Research all technologies · Spawn 3 division templates · Spawn 10 divisions · Give full ship & aircraft stockpiles · Create 3 admirals, 2 air marshals, 1 field marshal, 3 generals at maximum skill."
+
+ URGE_BTN_COMMISSION:    "👁  Commission the Shadow Bureau"
+ URGE_BTN_COMMISSION_TT: "Create an intelligence agency. The naming and emblem dialog will open natively.\n\n§R(Requires La Résistance DLC)§!"
+
+ URGE_BTN_MAX_AGENCY:    "👁  Maximize Intelligence Agency"
+ URGE_BTN_MAX_AGENCY_TT: "Unlock all agency branches and grant maximum experience.\n\n§R(Requires La Résistance DLC)§!"
+
+ URGE_BTN_RESUPPLY:    "●  Emergency Resupply"
+ URGE_BTN_RESUPPLY_TT: "Fuel → 100% · 9,999 convoys · 1M manpower · 9,999 PP · Max stability & war support · Full strategic resources."
+
+ URGE_BTN_RESOURCES:    "◆  Commandeer National Resources"
+ URGE_BTN_RESOURCES_TT: "Build 10× factories, dockyards, air bases, naval bases, radar, fuel silos, rocket sites, nuclear reactor in capital · 50 nukes · Full resources · Research all techs."
+
+ # National spirit
+ URGE_military_supremacy: "URGE Military Supremacy"
+ URGE_military_supremacy_desc: "URGE protocols active. All attrition negated. Officers command 1,000+ divisions. All branches at peak efficiency."
+
+ # Traits
+ URGE_supreme_commander: "Supreme Commander"
+ URGE_supreme_commander_desc: "URGE Supreme Command. Command capacity 1,000+ divisions. Attrition immunity."
+ URGE_grand_admiral: "Grand Admiral"
+ URGE_grand_admiral_desc: "URGE-designated fleet commander."
+ URGE_ace_air_marshal: "Ace Air Marshal"
+ URGE_ace_air_marshal_desc: "URGE-designated air commander."

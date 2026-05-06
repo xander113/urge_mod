@@ -1,0 +1,21 @@
+spriteTypes = {
+	# Decision / idea icons
+	spriteType = { name="GFX_idea_URGE_supremacy"     texturefile="gfx/interface/decisions/URGE_idea_supremacy.png" }
+	spriteType = { name="GFX_decision_cat_URGE"       texturefile="gfx/interface/decisions/URGE_category.png" }
+	spriteType = { name="GFX_decision_URGE_supremacy"     texturefile="gfx/interface/decisions/URGE_supremacy.png" }
+	spriteType = { name="GFX_decision_URGE_supremacy_off" texturefile="gfx/interface/decisions/URGE_supremacy_off.png" }
+	spriteType = { name="GFX_decision_URGE_military"  texturefile="gfx/interface/decisions/URGE_military.png" }
+	spriteType = { name="GFX_decision_URGE_spy"       texturefile="gfx/interface/decisions/URGE_spy.png" }
+	spriteType = { name="GFX_decision_URGE_supply"    texturefile="gfx/interface/decisions/URGE_supply.png" }
+	spriteType = { name="GFX_decision_URGE_resources" texturefile="gfx/interface/decisions/URGE_resources.png" }
+
+	# Panel background (320×390 RGBA)
+	spriteType = { name="GFX_URGE_panel_bg"    texturefile="gfx/interface/URGE_panel_bg.png" }
+
+	# Button strips (840×38, 3 frames: normal / hover / pressed)
+	stripSpriteType = { name="GFX_URGE_btn_purple" texturefile="gfx/interface/URGE_btn_purple.png" noOfFrames=3 }
+	stripSpriteType = { name="GFX_URGE_btn_blue"   texturefile="gfx/interface/URGE_btn_blue.png"   noOfFrames=3 }
+	stripSpriteType = { name="GFX_URGE_btn_green"  texturefile="gfx/interface/URGE_btn_green.png"  noOfFrames=3 }
+	stripSpriteType = { name="GFX_URGE_btn_red"    texturefile="gfx/interface/URGE_btn_red.png"    noOfFrames=3 }
+	stripSpriteType = { name="GFX_URGE_btn_violet" texturefile="gfx/interface/URGE_btn_violet.png" noOfFrames=3 }
+}

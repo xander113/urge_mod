@@ -1,0 +1,157 @@
+# ============================================================
+# URGE v3 – Scripted GUI
+#
+# context_type = player_context
+#   → Always active for the human player on the main map view.
+#
+# parent_window_name = "realmapview"
+#   → The URGE window is a child of HOI4's main map window,
+#     so it renders persistently on the game screen.
+#
+# All button effects use the _click suffix.
+# All visibility triggers use the _visible suffix.
+# ============================================================
+
+URGE_main_panel = {
+	context_type     = player_context
+	parent_window_name = "realmapview"
+	window_name      = "URGE_root_window"
+
+	# The GUI is always visible for a human player.
+	visible = { is_ai = no }
+
+	# ── Visibility triggers ───────────────────────────────────────────────────
+	triggers = {
+
+		# Main content panel (open/closed toggle)
+		URGE_panel_body_visible = {
+			has_variable = URGE_panel_open
+		}
+
+		# Supremacy row A: show ACTIVATE button when spirit is absent
+		URGE_row_sup_off_visible = {
+			has_variable = URGE_panel_open
+			NOT = { has_idea = URGE_military_supremacy }
+		}
+
+		# Supremacy row B: show DEACTIVATE button when spirit is active
+		URGE_row_sup_on_visible = {
+			has_variable = URGE_panel_open
+			has_idea = URGE_military_supremacy
+		}
+
+		# Intelligence row A: commission (no agency, has DLC)
+		URGE_row_no_agency_visible = {
+			has_variable = URGE_panel_open
+			has_dlc = "La Résistance"
+			NOT = { has_intelligence_agency = yes }
+		}
+
+		# Intelligence row B: maximize (has agency, has DLC)
+		URGE_row_has_agency_visible = {
+			has_variable = URGE_panel_open
+			has_dlc = "La Résistance"
+			has_intelligence_agency = yes
+		}
+
+		# Military button (always in panel when open)
+		URGE_row_military_visible = {
+			has_variable = URGE_panel_open
+		}
+		URGE_row_resupply_visible = {
+			has_variable = URGE_panel_open
+		}
+		URGE_row_resources_visible = {
+			has_variable = URGE_panel_open
+		}
+
+		# Click-enabled guards (prevent AI, enforce state)
+		URGE_toggle_btn_click_enabled = { is_ai = no }
+
+		URGE_sup_off_btn_click_enabled = {
+			is_ai = no
+			NOT = { has_idea = URGE_military_supremacy }
+		}
+		URGE_sup_on_btn_click_enabled = {
+			is_ai = no
+			has_idea = URGE_military_supremacy
+		}
+		URGE_military_btn_click_enabled = { is_ai = no }
+		URGE_commission_btn_click_enabled = {
+			is_ai = no
+			has_dlc = "La Résistance"
+			NOT = { has_intelligence_agency = yes }
+		}
+		URGE_max_agency_btn_click_enabled = {
+			is_ai = no
+			has_dlc = "La Résistance"
+			has_intelligence_agency = yes
+		}
+		URGE_resupply_btn_click_enabled   = { is_ai = no }
+		URGE_resources_btn_click_enabled  = { is_ai = no }
+	}
+
+	# ── Button effects ────────────────────────────────────────────────────────
+	effects = {
+
+		# Toggle the panel open/closed
+		URGE_toggle_btn_click = {
+			if = {
+				limit = { has_variable = URGE_panel_open }
+				clear_variable = URGE_panel_open
+			}
+			else = {
+				set_variable = { URGE_panel_open = 1 }
+			}
+		}
+
+		# ── Supremacy ────────────────────────────────────────────────────────
+		URGE_sup_off_btn_click = {
+			URGE_grant_military_supremacy_effect = yes
+		}
+		URGE_sup_on_btn_click = {
+			URGE_remove_military_supremacy_effect = yes
+		}
+
+		# ── Grand Military ───────────────────────────────────────────────────
+		URGE_military_btn_click = {
+			URGE_research_key_technologies_effect   = yes
+			URGE_add_division_templates_effect      = yes
+			URGE_spawn_land_effect                  = yes
+			URGE_spawn_grand_navy_effect            = yes
+			URGE_spawn_grand_air_effect             = yes
+			URGE_spawn_grand_land_commanders_effect = yes
+		}
+
+		# ── Intelligence ─────────────────────────────────────────────────────
+		URGE_commission_btn_click = {
+			create_intelligence_agency = yes
+			intelligence_agency_experience = 9999
+		}
+		URGE_max_agency_btn_click = {
+			intelligence_agency_experience = 9999
+			if = {
+				limit = { has_dlc = "La Résistance" }
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_defense_1
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_defense_2
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_offense_1
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_offense_2
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_intel_1
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_intel_2
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_cryptology_1
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_cryptology_2
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_propaganda_1
+				add_intelligence_agency_upgrade = intelligence_agency_upgrade_branch_propaganda_2
+			}
+		}
+
+		# ── Resupply & Resources ─────────────────────────────────────────────
+		URGE_resupply_btn_click = {
+			URGE_emergency_resupply_effect = yes
+		}
+		URGE_resources_btn_click = {
+			URGE_build_capital_effect             = yes
+			URGE_research_key_technologies_effect = yes
+		}
+	}
+}

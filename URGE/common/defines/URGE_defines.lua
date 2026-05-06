@@ -1,0 +1,6 @@
+-- URGE v3 – Engine-level overrides
+NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE        = -1.0
+NDefines.NNavy.AMPHIBIOUS_LANDING_PENALTY        = 0.0
+NDefines.NNavy.NAVAL_INVASION_PREPARE_HOURS      = 1
+NDefines.NNavy.PARADROP_AIR_SUPERIORITY_RATIO    = 0.0
+NDefines.NMilitary.FIELD_MARSHAL_ARMIES_CAP      = 1000

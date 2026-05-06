@@ -1,0 +1,2 @@
+URGE_is_player = { is_ai = no }
+URGE_has_spy_dlc = { has_dlc = "La Résistance" }
