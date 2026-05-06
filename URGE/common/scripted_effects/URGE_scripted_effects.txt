@@ -1,7 +1,3 @@
-# ============================================================
-# URGE v3 – Scripted Effects
-# ============================================================
-
 URGE_grant_military_supremacy_effect = {
 	if = {
 		limit = { NOT = { has_idea = URGE_military_supremacy } }
@@ -19,7 +15,6 @@ URGE_grant_military_supremacy_effect = {
 	navy_experience = 9999
 	air_experience = 9999
 	add_political_power = 9999
-	add_equipment_to_stockpile = { type = convoy_1 amount = 9999 producer = ROOT }
 }
 
 URGE_remove_military_supremacy_effect = {
@@ -34,46 +29,38 @@ URGE_research_key_technologies_effect = {
 		infantry_weapons=1 infantry_weapons1=1 infantry_weapons2=1
 		tech_support=1 tech_recon=1 tech_engineers=1
 		artillery1=1 artillery2=1 artillery3=1
-		paratroopers=1
-		early_destroyer=1
-		early_submarine=1
-		early_carrier=1
-		transport=1
-		early_fighter=1
-		early_bomber=1
+		paratroopers=1 marine_tech=1
+		early_destroyer=1 early_submarine=1 early_carrier=1 transport=1
+		early_fighter=1 early_bomber=1
 	}
-	add_research_slot = yes  add_research_slot = yes  add_research_slot = yes
+	add_research_slot = yes add_research_slot = yes add_research_slot = yes
 }
 
 URGE_spawn_land_effect = {
-	add_equipment_to_stockpile = { type=infantry_equipment_1  amount=200000 producer=ROOT }
-	add_equipment_to_stockpile = { type=support_equipment_1   amount=100000 producer=ROOT }
-	add_equipment_to_stockpile = { type=artillery_equipment_1  amount=40000 producer=ROOT }
-	add_equipment_to_stockpile = { type=convoy_1 amount=9999 producer=ROOT }
+	add_equipment_to_stockpile = { type=infantry_equipment_1  amount=5000000 producer=ROOT }
+	add_equipment_to_stockpile = { type=support_equipment_1   amount=2000000 producer=ROOT }
+	add_equipment_to_stockpile = { type=artillery_equipment_1 amount=1000000 producer=ROOT }
+	add_equipment_to_stockpile = { type=convoy_1              amount=50000   producer=ROOT }
+	add_equipment_to_stockpile = { type=transport_plane_equipment_1 amount=5000 producer=ROOT }
 }
 
 URGE_spawn_grand_navy_effect = {
 	navy_experience = 9999
-	add_equipment_to_stockpile = { type=destroyer_1  amount=60 producer=ROOT }
-	add_equipment_to_stockpile = { type=submarine_1  amount=50 producer=ROOT }
-	add_equipment_to_stockpile = { type=convoy_1     amount=9999 producer=ROOT }
+	add_equipment_to_stockpile = { type=destroyer_1  amount=500 producer=ROOT }
+	add_equipment_to_stockpile = { type=submarine_1  amount=500 producer=ROOT }
 	create_navy_leader = {
 		name="Grand Admiral URGE"
 		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
 		traits={ URGE_grand_admiral superior_tactician ironside }
-		skill=9 }
-	create_navy_leader = {
-		name="Vice Admiral URGE"
-		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		traits={ URGE_grand_admiral }
-		skill=8 }
+		skill=9 
+	}
 }
 
 URGE_spawn_grand_air_effect = {
 	air_experience = 9999
-	add_equipment_to_stockpile = { type=fighter_equipment_1       amount=500  producer=ROOT }
-	add_equipment_to_stockpile = { type=cas_equipment_1           amount=600  producer=ROOT }
-	add_equipment_to_stockpile = { type=tac_bomber_equipment_1    amount=400  producer=ROOT }
+	add_equipment_to_stockpile = { type=fighter_equipment_1       amount=25000  producer=ROOT }
+	add_equipment_to_stockpile = { type=cas_equipment_1           amount=15000  producer=ROOT }
+	add_equipment_to_stockpile = { type=tac_bomber_equipment_1    amount=10000  producer=ROOT }
 }
 
 URGE_spawn_grand_land_commanders_effect = {
@@ -82,55 +69,51 @@ URGE_spawn_grand_land_commanders_effect = {
 		name="Field Marshal URGE"
 		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
 		traits={ URGE_supreme_commander brilliant_strategist armor_officer infantry_officer logistics_wizard }
-		skill=9 }
+		skill=9 
+	}
 	create_corps_commander = {
 		name="General URGE-Alpha"
 		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
 		traits={ URGE_supreme_commander trickster armor_officer infantry_leader }
-		skill=9 }
+		skill=9 
+	}
 }
 
 URGE_emergency_resupply_effect = {
 	set_fuel_ratio = 1.0
 	add_political_power = 9999
-	add_manpower = 1000000
+	add_manpower = 5000000
 	add_war_support = 1.0
 	add_stability = 1.0
-	add_equipment_to_stockpile = { type=convoy_1 amount=9999 producer=ROOT }
+	add_equipment_to_stockpile = { type=convoy_1 amount=50000 producer=ROOT }
 	capital_scope = {
-		add_resource = { type=oil       amount=999 }
-		add_resource = { type=steel     amount=999 }
-		add_resource = { type=aluminium amount=999 }
-		add_resource = { type=tungsten  amount=999 }
-		add_resource = { type=rubber    amount=999 }
-		add_resource = { type=chromium  amount=999 }
+		add_resource = { type=oil amount=9999 }
+		add_resource = { type=steel amount=9999 }
+		add_resource = { type=aluminium amount=9999 }
+		add_resource = { type=tungsten amount=9999 }
+		add_resource = { type=rubber amount=9999 }
+		add_resource = { type=chromium amount=9999 }
 	}
 }
 
 URGE_build_capital_effect = {
-	add_nuclear_bombs = 50
-	add_political_power = 9999
-	add_stability = 1.0
-	add_war_support = 1.0
+	add_nuclear_bombs = 500
 	set_fuel_ratio = 1.0
 	capital_scope = {
 		add_extra_state_shared_building_slots = 20
-		add_building_construction = { type=arms_factory       level=10 instant_build=yes }
+		add_building_construction = { type=arms_factory level=10 instant_build=yes }
 		add_building_construction = { type=industrial_complex level=10 instant_build=yes }
-		add_building_construction = { type=dockyard           level=10 instant_build=yes }
-		add_building_construction = { type=air_base           level=10 instant_build=yes }
-		add_building_construction = { type=naval_base         level=10 instant_build=yes }
-		add_building_construction = { type=radar_station      level=5  instant_build=yes }
-		add_building_construction = { type=fuel_silo          level=5  instant_build=yes }
-		add_building_construction = { type=supply_node        level=1  instant_build=yes }
-		add_building_construction = { type=anti_air_building  level=5  instant_build=yes }
-		add_building_construction = { type=rocket_site        level=3  instant_build=yes }
-		add_building_construction = { type=nuclear_reactor    level=2  instant_build=yes }
-		add_resource = { type=oil       amount=999 }
-		add_resource = { type=steel     amount=999 }
-		add_resource = { type=aluminium amount=999 }
-		add_resource = { type=tungsten  amount=999 }
-		add_resource = { type=rubber    amount=999 }
-		add_resource = { type=chromium  amount=999 }
+		add_building_construction = { type=dockyard level=10 instant_build=yes }
+		add_building_construction = { type=air_base level=10 instant_build=yes }
+		add_building_construction = { type=naval_base level=10 instant_build=yes }
+		add_building_construction = { type=supply_node level=1 instant_build=yes }
+	}
+}
+
+URGE_fund_spy_agency_effect = {
+	add_political_power = 500
+	capital_scope = {
+		add_extra_state_shared_building_slots = 5
+		add_building_construction = { type=civilian_factory level=5 instant_build=yes }
 	}
 }

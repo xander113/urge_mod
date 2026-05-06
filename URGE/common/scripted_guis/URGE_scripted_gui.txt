@@ -1,0 +1,52 @@
+scripted_gui = {
+	
+	# GUI 1: The Toggle Button (Always visible)
+	URGE_toggle_gui = {
+		context_type = player_context
+		window_name = "URGE_open_button_window"
+		visible = { always = yes }
+		
+		effects = {
+			URGE_toggle_btn_click = {
+				if = { limit = { has_variable = URGE_panel_open } clear_variable = URGE_panel_open }
+				else = { set_variable = { URGE_panel_open = 1 } }
+			}
+		}
+	}
+
+	# GUI 2: The Main Panel (Visible only when variable is 1)
+	URGE_main_panel_gui = {
+		context_type = player_context
+		window_name = "URGE_main_panel_window"
+		visible = { has_variable = URGE_panel_open }
+
+		triggers = {
+			URGE_sup_off_btn_visible = { NOT = { has_idea = URGE_military_supremacy } }
+			URGE_sup_on_btn_visible  = { has_idea = URGE_military_supremacy }
+			URGE_commission_btn_visible = { has_dlc = "La Resistance" NOT = { has_intelligence_agency = yes } }
+			URGE_max_agency_btn_visible = { has_dlc = "La Resistance" has_intelligence_agency = yes }
+		}
+
+		effects = {
+			URGE_sup_off_btn_click    = { URGE_grant_military_supremacy_effect = yes }
+			URGE_sup_on_btn_click     = { URGE_remove_military_supremacy_effect = yes }
+			
+			URGE_military_btn_click = {
+				URGE_research_key_technologies_effect = yes
+				URGE_spawn_land_effect = yes
+				URGE_spawn_grand_navy_effect = yes
+				URGE_spawn_grand_air_effect = yes
+				URGE_spawn_grand_land_commanders_effect = yes
+			}
+			
+			URGE_commission_btn_click = { URGE_fund_spy_agency_effect = yes }
+			URGE_max_agency_btn_click = { add_political_power = 9999 }
+			URGE_resupply_btn_click   = { URGE_emergency_resupply_effect = yes }
+			
+			URGE_resources_btn_click = {
+				URGE_build_capital_effect = yes
+				URGE_research_key_technologies_effect = yes
+			}
+		}
+	}
+}
