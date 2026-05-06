@@ -1,6 +1,5 @@
 # ============================================================
 # URGE v3 – Scripted Effects
-# Stability, war support, and manpower NOT granted by supremacy.
 # ============================================================
 
 URGE_grant_military_supremacy_effect = {
@@ -11,16 +10,14 @@ URGE_grant_military_supremacy_effect = {
 	every_army_leader = {
 		if = { limit = { NOT = { has_trait = URGE_supreme_commander } }
 			add_unit_leader_trait = URGE_supreme_commander }
-		set_attack_skill = 9   set_defense_skill = 9
-		set_planning_skill = 9 set_logistics_skill = 9
 	}
 	every_navy_leader = {
 		if = { limit = { NOT = { has_trait = URGE_grand_admiral } }
 			add_unit_leader_trait = URGE_grand_admiral }
-		set_attack_skill = 9  set_defense_skill = 9
-		set_maneuvering_skill = 9  set_coordination_skill = 9
 	}
-	army_experience = 9999  navy_experience = 9999  air_experience = 9999
+	army_experience = 9999
+	navy_experience = 9999
+	air_experience = 9999
 	add_political_power = 9999
 	add_equipment_to_stockpile = { type = convoy_1 amount = 9999 producer = ROOT }
 }
@@ -35,188 +32,48 @@ URGE_remove_military_supremacy_effect = {
 URGE_research_key_technologies_effect = {
 	set_technology = {
 		infantry_weapons=1 infantry_weapons1=1 infantry_weapons2=1
-		tech_support=1 tech_recon=1 tech_engineers=1 tech_field_hospital=1
-		tech_logistics_company=1 tech_maintenance_company=1
+		tech_support=1 tech_recon=1 tech_engineers=1
 		artillery1=1 artillery2=1 artillery3=1
-		anti_tank_tech=1 anti_tank_tech2=1 anti_air_tech=1 anti_air_tech2=1
-		basic_light_tank=1 improved_light_tank=1 advanced_light_tank=1
-		basic_medium_tank=1 improved_medium_tank=1 advanced_medium_tank=1
-		basic_heavy_tank=1 improved_heavy_tank=1 advanced_heavy_tank=1
-		basic_modern_tank=1
-		motorized_equipment=1 motorized_equipment1=1 motorized_equipment2=1
-		mechanized_equipment=1 mechanized_equipment1=1
-		mechanized_equipment2=1 mechanized_equipment3=1
-		paratroopers=1 marine_tech=1 mountaineers_tech=1
-		early_destroyer=1 basic_destroyer=1 improved_destroyer=1 advanced_destroyer=1
-		early_light_cruiser=1 basic_light_cruiser=1 improved_light_cruiser=1 advanced_light_cruiser=1
-		early_heavy_cruiser=1 basic_heavy_cruiser=1 improved_heavy_cruiser=1 advanced_heavy_cruiser=1
-		early_battlecruiser=1 basic_battlecruiser=1
-		early_battleship=1 basic_battleship=1 improved_battleship=1 advanced_battleship=1
-		early_submarine=1 basic_submarine=1 improved_submarine=1 advanced_submarine=1
-		early_carrier=1 basic_carrier=1 improved_carrier=1 advanced_carrier=1
-		transport=1 naval_invasion_tech=1 landing_craft_tech=1
-		early_fighter=1 fighter1=1 fighter2=1 fighter3=1
-		early_tac_bomber=1 tac_bomber1=1 tac_bomber2=1 tac_bomber3=1
-		early_CAS=1 CAS1=1 CAS2=1 CAS3=1
-		early_heavy_fighter=1 heavy_fighter1=1 heavy_fighter2=1 heavy_fighter3=1
-		early_bomber=1 strat_bomber=1 strat_bomber2=1 strat_bomber3=1
-		early_naval_bomber=1 naval_bomber1=1 naval_bomber2=1 naval_bomber3=1
-		jet_technology=1 jet_technology2=1
-		grand_battle_plan=1 mobile_warfare=1
-		air_superiority_doctrine=1 convoy_interdiction_doctrine=1 base_strike=1
+		paratroopers=1
+		early_destroyer=1
+		early_submarine=1
+		early_carrier=1
+		transport=1
+		early_fighter=1
+		early_bomber=1
 	}
 	add_research_slot = yes  add_research_slot = yes  add_research_slot = yes
 }
 
-URGE_add_division_templates_effect = {
-	add_division_template = {
-		name = "URGE Elite Infantry"
-		regiments = {
-			infantry={x=0 y=0} infantry={x=0 y=1} infantry={x=0 y=2} infantry={x=0 y=3}
-			infantry={x=1 y=0} infantry={x=1 y=1} infantry={x=1 y=2} infantry={x=1 y=3}
-			motorized={x=2 y=0} motorized={x=2 y=1}
-		}
-		support = {
-			recon={x=0 y=0} engineer={x=0 y=1} artillery={x=0 y=2}
-			logistics_company={x=0 y=3} anti_air={x=0 y=4}
-		}
-	}
-	add_division_template = {
-		name = "URGE Armoured Spearhead"
-		regiments = {
-			medium_armor={x=0 y=0} medium_armor={x=0 y=1} medium_armor={x=0 y=2}
-			medium_armor={x=1 y=0} medium_armor={x=1 y=1}
-			motorized={x=2 y=0} motorized={x=2 y=1} motorized={x=2 y=2}
-		}
-		support = {
-			recon={x=0 y=0} engineer={x=0 y=1} anti_tank={x=0 y=2}
-			logistics_company={x=0 y=3} artillery={x=0 y=4}
-		}
-	}
-	add_division_template = {
-		name = "URGE Marine Raiders"
-		regiments = {
-			marine={x=0 y=0} marine={x=0 y=1} marine={x=0 y=2} marine={x=0 y=3}
-			marine={x=1 y=0} marine={x=1 y=1} marine={x=1 y=2} marine={x=1 y=3}
-			motorized={x=2 y=0} motorized={x=2 y=1}
-		}
-		support = {
-			recon={x=0 y=0} engineer={x=0 y=1} artillery={x=0 y=2}
-			logistics_company={x=0 y=3} anti_air={x=0 y=4}
-		}
-	}
-}
-
 URGE_spawn_land_effect = {
-	add_equipment_to_stockpile = { type=infantry_equipment_0  amount=200000 producer=ROOT }
 	add_equipment_to_stockpile = { type=infantry_equipment_1  amount=200000 producer=ROOT }
-	add_equipment_to_stockpile = { type=infantry_equipment_2  amount=200000 producer=ROOT }
 	add_equipment_to_stockpile = { type=support_equipment_1   amount=100000 producer=ROOT }
-	add_equipment_to_stockpile = { type=motorized_equipment_1   amount=80000 producer=ROOT }
-	add_equipment_to_stockpile = { type=mechanized_equipment_1  amount=50000 producer=ROOT }
-	add_equipment_to_stockpile = { type=mechanized_equipment_2  amount=50000 producer=ROOT }
-	add_equipment_to_stockpile = { type=mechanized_equipment_3  amount=50000 producer=ROOT }
-	add_equipment_to_stockpile = { type=medium_tank_equipment_1  amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=medium_tank_equipment_2  amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=medium_tank_equipment_3  amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=heavy_tank_equipment_1   amount=10000 producer=ROOT }
-	add_equipment_to_stockpile = { type=modern_tank_equipment_1  amount=10000 producer=ROOT }
 	add_equipment_to_stockpile = { type=artillery_equipment_1  amount=40000 producer=ROOT }
-	add_equipment_to_stockpile = { type=artillery_equipment_2  amount=40000 producer=ROOT }
-	add_equipment_to_stockpile = { type=anti_tank_equipment_1  amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=anti_tank_equipment_2  amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=anti_air_equipment_1   amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=anti_air_equipment_2   amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=engineer_equipment_1   amount=20000 producer=ROOT }
-	add_equipment_to_stockpile = { type=paratrooper_equipment_1   amount=30000 producer=ROOT }
-	add_equipment_to_stockpile = { type=assault_brigade_equipment_1 amount=30000 producer=ROOT }
 	add_equipment_to_stockpile = { type=convoy_1 amount=9999 producer=ROOT }
-	create_unit = { division="name=\"1st URGE Elite\" division_template=\"URGE Elite Infantry\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"2nd URGE Elite\" division_template=\"URGE Elite Infantry\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"3rd URGE Elite\" division_template=\"URGE Elite Infantry\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"4th URGE Elite\" division_template=\"URGE Elite Infantry\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"5th URGE Elite\" division_template=\"URGE Elite Infantry\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"1st URGE Armour\" division_template=\"URGE Armoured Spearhead\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"2nd URGE Armour\" division_template=\"URGE Armoured Spearhead\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"3rd URGE Armour\" division_template=\"URGE Armoured Spearhead\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"1st URGE Marines\" division_template=\"URGE Marine Raiders\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
-	create_unit = { division="name=\"2nd URGE Marines\" division_template=\"URGE Marine Raiders\" start_experience_factor=1 start_equipment_factor=1" owner=ROOT }
 }
 
 URGE_spawn_grand_navy_effect = {
 	navy_experience = 9999
 	add_equipment_to_stockpile = { type=destroyer_1  amount=60 producer=ROOT }
-	add_equipment_to_stockpile = { type=destroyer_2  amount=60 producer=ROOT }
-	add_equipment_to_stockpile = { type=destroyer_3  amount=60 producer=ROOT }
-	add_equipment_to_stockpile = { type=light_cruiser_1  amount=40 producer=ROOT }
-	add_equipment_to_stockpile = { type=light_cruiser_2  amount=40 producer=ROOT }
-	add_equipment_to_stockpile = { type=light_cruiser_3  amount=40 producer=ROOT }
-	add_equipment_to_stockpile = { type=heavy_cruiser_1  amount=30 producer=ROOT }
-	add_equipment_to_stockpile = { type=heavy_cruiser_2  amount=30 producer=ROOT }
-	add_equipment_to_stockpile = { type=heavy_cruiser_3  amount=30 producer=ROOT }
-	add_equipment_to_stockpile = { type=battlecruiser_1  amount=20 producer=ROOT }
-	add_equipment_to_stockpile = { type=battlecruiser_2  amount=20 producer=ROOT }
-	add_equipment_to_stockpile = { type=battleship_1     amount=20 producer=ROOT }
-	add_equipment_to_stockpile = { type=battleship_2     amount=20 producer=ROOT }
-	add_equipment_to_stockpile = { type=battleship_3     amount=20 producer=ROOT }
-	add_equipment_to_stockpile = { type=carrier_1        amount=12 producer=ROOT }
-	add_equipment_to_stockpile = { type=carrier_2        amount=12 producer=ROOT }
-	add_equipment_to_stockpile = { type=carrier_3        amount=12 producer=ROOT }
-	add_equipment_to_stockpile = { type=submarine_1      amount=50 producer=ROOT }
-	add_equipment_to_stockpile = { type=submarine_2      amount=50 producer=ROOT }
-	add_equipment_to_stockpile = { type=submarine_3      amount=50 producer=ROOT }
-	add_equipment_to_stockpile = { type=convoy_1         amount=9999 producer=ROOT }
+	add_equipment_to_stockpile = { type=submarine_1  amount=50 producer=ROOT }
+	add_equipment_to_stockpile = { type=convoy_1     amount=9999 producer=ROOT }
 	create_navy_leader = {
 		name="Grand Admiral URGE"
 		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_navy_1.dds"
-		traits={ URGE_grand_admiral navy_capital_ship_commander superior_tactician ironside }
-		skill=9 attack_skill=9 defense_skill=9 maneuvering_skill=9 coordination_skill=9 }
+		traits={ URGE_grand_admiral superior_tactician ironside }
+		skill=9 }
 	create_navy_leader = {
 		name="Vice Admiral URGE"
 		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_navy_2.dds"
-		traits={ URGE_grand_admiral navy_submarine_commander fleet_in_being_strategist }
-		skill=8 attack_skill=8 defense_skill=8 maneuvering_skill=8 coordination_skill=8 }
-	create_navy_leader = {
-		name="Rear Admiral URGE"
-		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_navy_3.dds"
-		traits={ URGE_grand_admiral seawolf navy_screen_commander }
-		skill=8 attack_skill=8 defense_skill=8 maneuvering_skill=8 coordination_skill=8 }
+		traits={ URGE_grand_admiral }
+		skill=8 }
 }
 
 URGE_spawn_grand_air_effect = {
 	air_experience = 9999
-	add_equipment_to_stockpile = { type=fighter_equipment_0       amount=500  producer=ROOT }
 	add_equipment_to_stockpile = { type=fighter_equipment_1       amount=500  producer=ROOT }
-	add_equipment_to_stockpile = { type=fighter_equipment_2       amount=500  producer=ROOT }
-	add_equipment_to_stockpile = { type=fighter_equipment_3       amount=1000 producer=ROOT }
-	add_equipment_to_stockpile = { type=heavy_fighter_equipment_1 amount=400  producer=ROOT }
-	add_equipment_to_stockpile = { type=heavy_fighter_equipment_2 amount=400  producer=ROOT }
-	add_equipment_to_stockpile = { type=heavy_fighter_equipment_3 amount=400  producer=ROOT }
 	add_equipment_to_stockpile = { type=cas_equipment_1           amount=600  producer=ROOT }
-	add_equipment_to_stockpile = { type=cas_equipment_2           amount=600  producer=ROOT }
-	add_equipment_to_stockpile = { type=cas_equipment_3           amount=600  producer=ROOT }
 	add_equipment_to_stockpile = { type=tac_bomber_equipment_1    amount=400  producer=ROOT }
-	add_equipment_to_stockpile = { type=tac_bomber_equipment_2    amount=400  producer=ROOT }
-	add_equipment_to_stockpile = { type=tac_bomber_equipment_3    amount=400  producer=ROOT }
-	add_equipment_to_stockpile = { type=strat_bomber_equipment_1  amount=250  producer=ROOT }
-	add_equipment_to_stockpile = { type=strat_bomber_equipment_2  amount=250  producer=ROOT }
-	add_equipment_to_stockpile = { type=strat_bomber_equipment_3  amount=250  producer=ROOT }
-	add_equipment_to_stockpile = { type=naval_bomber_equipment_1  amount=350  producer=ROOT }
-	add_equipment_to_stockpile = { type=naval_bomber_equipment_2  amount=350  producer=ROOT }
-	add_equipment_to_stockpile = { type=naval_bomber_equipment_3  amount=350  producer=ROOT }
-	add_equipment_to_stockpile = { type=scout_plane_equipment_1   amount=200  producer=ROOT }
-	add_equipment_to_stockpile = { type=jet_equipment_1           amount=500  producer=ROOT }
-	add_equipment_to_stockpile = { type=jet_equipment_2           amount=500  producer=ROOT }
-	create_air_chief = {
-		name="Air Marshal URGE"
-		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_air_force_1.dds"
-		traits={ URGE_ace_air_marshal carpet_bomber air_superiority_commander ground_support_expert }
-		skill=9 attack_skill=9 defense_skill=9 maneuvering_skill=9 coordination_skill=9 }
-	create_air_chief = {
-		name="Air Vice Marshal URGE"
-		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_air_force_2.dds"
-		traits={ URGE_ace_air_marshal naval_strike_expert ground_support_expert }
-		skill=8 attack_skill=8 defense_skill=8 maneuvering_skill=8 coordination_skill=8 }
 }
 
 URGE_spawn_grand_land_commanders_effect = {
@@ -225,22 +82,12 @@ URGE_spawn_grand_land_commanders_effect = {
 		name="Field Marshal URGE"
 		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
 		traits={ URGE_supreme_commander brilliant_strategist armor_officer infantry_officer logistics_wizard }
-		skill=9 attack_skill=9 defense_skill=9 planning_skill=9 logistics_skill=9 }
+		skill=9 }
 	create_corps_commander = {
 		name="General URGE-Alpha"
 		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
 		traits={ URGE_supreme_commander trickster armor_officer infantry_leader }
-		skill=9 attack_skill=9 defense_skill=9 planning_skill=9 logistics_skill=9 }
-	create_corps_commander = {
-		name="General URGE-Beta"
-		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
-		traits={ URGE_supreme_commander trait_cautious infantry_leader commando }
-		skill=9 attack_skill=9 defense_skill=9 planning_skill=9 logistics_skill=9 }
-	create_corps_commander = {
-		name="General URGE-Gamma"
-		portrait_path="gfx/leaders/Europe/Portrait_Europe_Generic_land_4.dds"
-		traits={ URGE_supreme_commander trickster armor_officer ranger }
-		skill=9 attack_skill=9 defense_skill=9 planning_skill=9 logistics_skill=9 }
+		skill=9 }
 }
 
 URGE_emergency_resupply_effect = {
@@ -249,8 +96,7 @@ URGE_emergency_resupply_effect = {
 	add_manpower = 1000000
 	add_war_support = 1.0
 	add_stability = 1.0
-	add_equipment_to_stockpile = { type=convoy_1            amount=9999 producer=ROOT }
-	add_equipment_to_stockpile = { type=truck_horse_drawn_1 amount=5000 producer=ROOT }
+	add_equipment_to_stockpile = { type=convoy_1 amount=9999 producer=ROOT }
 	capital_scope = {
 		add_resource = { type=oil       amount=999 }
 		add_resource = { type=steel     amount=999 }

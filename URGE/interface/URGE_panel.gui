@@ -1,178 +1,179 @@
 # ============================================================
 # URGE v3 – Map-Screen GUI
+# Flattened containers for Scripted GUI visibility toggling
 # ============================================================
 
 guiTypes = {
 
-	# ─── Root anchor window ─────────────────────────────────────────────────
+	# ── Toggle Button (Always visible) ───────────────────────────────────────
 	containerWindowType = {
-		name        = "URGE_root_window"
-		# CENTER_RIGHT anchors us to the right edge at screen mid-height.
-		# x = -360 puts the RIGHT EDGE of this window 360 px from screen right.
-		# y = -195 lifts it 195 px above screen vertical centre.
+		name        = "URGE_toggle_window"
+		position    = { x = -52  y = -24 }
 		orientation = CENTER_RIGHT
-		origo       = CENTER_RIGHT
-		position    = { x = -360  y = -195 }
-		size        = { width = 360  height = 390 }
-
-		# ── Toggle / handle button (always visible, B keybind) ──────────────
+		
 		buttonType = {
-			name        = "URGE_toggle_btn"
-			position    = { x = 308  y = 171 }
-			size        = { width = 48  height = 48 }
+			name              = "URGE_toggle_btn"
+			position          = { x = 0  y = 0 }
 			quadTextureSprite = "GFX_decision_cat_URGE"
-			shortcut    = "b"
-			pdx_tooltip = "URGE_TOGGLE_TT"
-			clicksound  = click_close
+			shortcut          = "b"
+			pdx_tooltip       = "URGE_TOGGLE_TT"
+			clicksound        = click_close
+		}
+	}
+
+	# ── Panel Background & Text (Visible when Open) ──────────────────────────
+	containerWindowType = {
+		name        = "URGE_panel_bg_window"
+		position    = { x = -360  y = -195 }
+		size        = { width = 304  height = 390 }
+		orientation = CENTER_RIGHT
+
+		iconType = {
+			name       = "URGE_bg_icon"
+			spriteType = "GFX_URGE_panel_bg"
+			position   = { x = 0  y = 0 }
 		}
 
-		# ─── Panel body  (shown only when URGE_panel_body_visible is true) ──
-		containerWindowType = {
-			name     = "URGE_panel_body"
-			position = { x = 0  y = 0 }
-			size     = { width = 304  height = 390 }
+		instantTextboxType = {
+			name      = "URGE_header_txt"
+			position  = { x = 8  y = 7 }
+			maxWidth  = 288
+			maxHeight = 24
+			font      = "hoi_20b"
+			text      = "URGE_PANEL_HEADER"
+			format    = center
+		}
 
-			# Panel background
-			iconType = {
-				name       = "URGE_bg_icon"
-				spriteType = "GFX_URGE_panel_bg"
-				position   = { x = 0  y = 0 }
-			}
+		instantTextboxType = {
+			name              = "URGE_footer_txt"
+			position          = { x = 4  y = 358 }
+			maxWidth          = 296
+			maxHeight         = 24
+			font              = "hoi_13"
+			text              = "URGE_PANEL_FOOTER"
+			format            = center
+			alwaystransparent = yes
+		}
+	}
 
-			# Header text
-			instantTextboxType = {
-				name      = "URGE_header_txt"
-				position  = { x = 8  y = 7 }
-				size      = { width = 288  maxHeight = 24 }
-				font      = "hoi_20b"
-				text      = "URGE_PANEL_HEADER"
-				format    = center
-			}
+	# ── Row 1: Activate Supremacy (Supremacy OFF) ────────────────────────────
+	containerWindowType = {
+		name        = "URGE_supremacy_off_window"
+		position    = { x = -358  y = -155 }
+		orientation = CENTER_RIGHT
 
-			# ── ROW: Activate Supremacy (B shortcut) [shown when sup OFF] ────
-			containerWindowType = {
-				name     = "URGE_row_sup_off"
-				position = { x = 2  y = 40 }
-				size     = { width = 300  height = 36 }
-				buttonType = {
-					name        = "URGE_sup_off_btn"
-					position    = { x = 0  y = 0 }
-					size        = { width = 300  height = 36 }
-					spriteType  = "GFX_URGE_btn_purple"
-					buttonText  = "URGE_BTN_ACTIVATE"
-					shortcut    = "b"
-					pdx_tooltip = "URGE_BTN_ACTIVATE_TT"
-					clicksound  = decisions_ui_confirm
-				}
-			}
+		buttonType = {
+			name        = "URGE_sup_off_btn"
+			position    = { x = 0  y = 0 }
+			spriteType  = "GFX_URGE_btn_purple"
+			buttonText  = "URGE_BTN_ACTIVATE"
+			font        = "hoi_18mbs"
+			shortcut    = "b"
+			pdx_tooltip = "URGE_BTN_ACTIVATE_TT"
+			clicksound  = decisions_ui_confirm
+		}
+	}
 
-			# ── ROW: Deactivate Supremacy (B shortcut) [shown when sup ON] ───
-			containerWindowType = {
-				name     = "URGE_row_sup_on"
-				position = { x = 2  y = 40 }
-				size     = { width = 300  height = 36 }
-				buttonType = {
-					name        = "URGE_sup_on_btn"
-					position    = { x = 0  y = 0 }
-					size        = { width = 300  height = 36 }
-					spriteType  = "GFX_URGE_btn_red"
-					buttonText  = "URGE_BTN_DEACTIVATE"
-					shortcut    = "b"
-					pdx_tooltip = "URGE_BTN_DEACTIVATE_TT"
-					clicksound  = decisions_ui_decline
-				}
-			}
+	# ── Row 1: Deactivate Supremacy (Supremacy ON) ───────────────────────────
+	containerWindowType = {
+		name        = "URGE_supremacy_on_window"
+		position    = { x = -358  y = -155 }
+		orientation = CENTER_RIGHT
 
-			# ── ROW: Grand Military ──────────────────────────────────────────
-			containerWindowType = {
-				name     = "URGE_row_military"
-				position = { x = 2  y = 80 }
-				size     = { width = 300  height = 36 }
-				buttonType = {
-					name        = "URGE_military_btn"
-					position    = { x = 0  y = 0 }
-					size        = { width = 300  height = 36 }
-					spriteType  = "GFX_URGE_btn_blue"
-					buttonText  = "URGE_BTN_MILITARY"
-					pdx_tooltip = "URGE_BTN_MILITARY_TT"
-					clicksound  = decisions_ui_confirm
-				}
-			}
+		buttonType = {
+			name        = "URGE_sup_on_btn"
+			position    = { x = 0  y = 0 }
+			spriteType  = "GFX_URGE_btn_red"
+			buttonText  = "URGE_BTN_DEACTIVATE"
+			font        = "hoi_18mbs"
+			shortcut    = "b"
+			pdx_tooltip = "URGE_BTN_DEACTIVATE_TT"
+			clicksound  = decisions_ui_decline
+		}
+	}
 
-			# ── ROW: Commission Shadow Bureau (no agency) ─────────────────────
-			containerWindowType = {
-				name     = "URGE_row_no_agency"
-				position = { x = 2  y = 120 }
-				size     = { width = 300  height = 36 }
-				buttonType = {
-					name        = "URGE_commission_btn"
-					position    = { x = 0  y = 0 }
-					size        = { width = 300  height = 36 }
-					spriteType  = "GFX_URGE_btn_violet"
-					buttonText  = "URGE_BTN_COMMISSION"
-					pdx_tooltip = "URGE_BTN_COMMISSION_TT"
-					clicksound  = decisions_ui_confirm
-				}
-			}
+	# ── Row 2: Grand Military ────────────────────────────────────────────────
+	containerWindowType = {
+		name        = "URGE_military_window"
+		position    = { x = -358  y = -115 }
+		orientation = CENTER_RIGHT
 
-			# ── ROW: Maximize Agency (has agency) ────────────────────────────
-			containerWindowType = {
-				name     = "URGE_row_has_agency"
-				position = { x = 2  y = 120 }
-				size     = { width = 300  height = 36 }
-				buttonType = {
-					name        = "URGE_max_agency_btn"
-					position    = { x = 0  y = 0 }
-					size        = { width = 300  height = 36 }
-					spriteType  = "GFX_URGE_btn_violet"
-					buttonText  = "URGE_BTN_MAX_AGENCY"
-					pdx_tooltip = "URGE_BTN_MAX_AGENCY_TT"
-					clicksound  = decisions_ui_confirm
-				}
-			}
+		buttonType = {
+			name        = "URGE_military_btn"
+			position    = { x = 0  y = 0 }
+			spriteType  = "GFX_URGE_btn_blue"
+			buttonText  = "URGE_BTN_MILITARY"
+			font        = "hoi_18mbs"
+			pdx_tooltip = "URGE_BTN_MILITARY_TT"
+			clicksound  = decisions_ui_confirm
+		}
+	}
 
-			# ── ROW: Emergency Resupply ──────────────────────────────────────
-			containerWindowType = {
-				name     = "URGE_row_resupply"
-				position = { x = 2  y = 160 }
-				size     = { width = 300  height = 36 }
-				buttonType = {
-					name        = "URGE_resupply_btn"
-					position    = { x = 0  y = 0 }
-					size        = { width = 300  height = 36 }
-					spriteType  = "GFX_URGE_btn_green"
-					buttonText  = "URGE_BTN_RESUPPLY"
-					pdx_tooltip = "URGE_BTN_RESUPPLY_TT"
-					clicksound  = decisions_ui_confirm
-				}
-			}
+	# ── Row 3: Commission Bureau (No Agency) ─────────────────────────────────
+	containerWindowType = {
+		name        = "URGE_commission_window"
+		position    = { x = -358  y = -75 }
+		orientation = CENTER_RIGHT
 
-			# ── ROW: Commandeer Resources ────────────────────────────────────
-			containerWindowType = {
-				name     = "URGE_row_resources"
-				position = { x = 2  y = 200 }
-				size     = { width = 300  height = 36 }
-				buttonType = {
-					name        = "URGE_resources_btn"
-					position    = { x = 0  y = 0 }
-					size        = { width = 300  height = 36 }
-					spriteType  = "GFX_URGE_btn_green"
-					buttonText  = "URGE_BTN_RESOURCES"
-					pdx_tooltip = "URGE_BTN_RESOURCES_TT"
-					clicksound  = decisions_ui_confirm
-				}
-			}
+		buttonType = {
+			name        = "URGE_commission_btn"
+			position    = { x = 0  y = 0 }
+			spriteType  = "GFX_URGE_btn_violet"
+			buttonText  = "URGE_BTN_COMMISSION"
+			font        = "hoi_18mbs"
+			pdx_tooltip = "URGE_BTN_COMMISSION_TT"
+			clicksound  = decisions_ui_confirm
+		}
+	}
 
-			# Footer hint
-			instantTextboxType = {
-				name     = "URGE_footer_txt"
-				position = { x = 4  y = 358 }
-				size     = { width = 296  maxHeight = 24 }
-				font     = "hoi_13"
-				text     = "URGE_PANEL_FOOTER"
-				format   = center
-				alwaystransparent = yes
-			}
+	# ── Row 3: Maximize Agency (Has Agency) ──────────────────────────────────
+	containerWindowType = {
+		name        = "URGE_max_agency_window"
+		position    = { x = -358  y = -75 }
+		orientation = CENTER_RIGHT
+
+		buttonType = {
+			name        = "URGE_max_agency_btn"
+			position    = { x = 0  y = 0 }
+			spriteType  = "GFX_URGE_btn_violet"
+			buttonText  = "URGE_BTN_MAX_AGENCY"
+			font        = "hoi_18mbs"
+			pdx_tooltip = "URGE_BTN_MAX_AGENCY_TT"
+			clicksound  = decisions_ui_confirm
+		}
+	}
+
+	# ── Row 4: Emergency Resupply ────────────────────────────────────────────
+	containerWindowType = {
+		name        = "URGE_resupply_window"
+		position    = { x = -358  y = -35 }
+		orientation = CENTER_RIGHT
+
+		buttonType = {
+			name        = "URGE_resupply_btn"
+			position    = { x = 0  y = 0 }
+			spriteType  = "GFX_URGE_btn_green"
+			buttonText  = "URGE_BTN_RESUPPLY"
+			font        = "hoi_18mbs"
+			pdx_tooltip = "URGE_BTN_RESUPPLY_TT"
+			clicksound  = decisions_ui_confirm
+		}
+	}
+
+	# ── Row 5: Commandeer Resources ──────────────────────────────────────────
+	containerWindowType = {
+		name        = "URGE_resources_window"
+		position    = { x = -358  y = 5 }
+		orientation = CENTER_RIGHT
+
+		buttonType = {
+			name        = "URGE_resources_btn"
+			position    = { x = 0  y = 0 }
+			spriteType  = "GFX_URGE_btn_green"
+			buttonText  = "URGE_BTN_RESOURCES"
+			font        = "hoi_18mbs"
+			pdx_tooltip = "URGE_BTN_RESOURCES_TT"
+			clicksound  = decisions_ui_confirm
 		}
 	}
 }
